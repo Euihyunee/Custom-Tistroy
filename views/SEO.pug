@@ -1,0 +1,40 @@
+//- SEO & JSON-LD Configuration
+s_if_var_seo_enhanced
+  //- JSON-LD for Articles
+  s_article_rep
+    script(type='application/ld+json')
+      | {
+      |   "@context": "https://schema.org",
+      |   "@type": "TechArticle",
+      |   "headline": "[##_article_rep_title_##]",
+      |   "datePublished": "[##_article_rep_date_year_##]-[##_article_rep_date_month_##]-[##_article_rep_date_day_##]",
+      |   "description": "[##_article_rep_desc_##]",
+      |   "author": {
+      |     "@type": "Person",
+      |     "name": "[##_blogger_##]"
+      |   },
+      |   "publisher": {
+      |     "@type": "Organization",
+      |     "name": "[##_title_##]",
+      |     "logo": {
+      |       "@type": "ImageObject",
+      |       "url": "[##_image_##]"
+      |     }
+      |   },
+      |   "mainEntityOfPage": {
+      |     "@type": "WebPage",
+      |     "@id": "[##_article_rep_link_##]"
+      |   }
+      | }
+
+  //- Open Graph & Twitter Card Enhancements
+  meta(name='description' content='[##_desc_##]')
+  meta(property='og:type' content='website')
+  meta(property='og:title' content='[##_page_title_##]')
+  meta(property='og:description' content='[##_desc_##]')
+  meta(property='og:image' content='[##_image_##]')
+  meta(property='og:url' content='[##_blog_link_##]')
+  meta(name='twitter:card' content='summary_large_image')
+  meta(name='twitter:title' content='[##_page_title_##]')
+  meta(name='twitter:description' content='[##_desc_##]')
+  meta(name='twitter:image' content='[##_image_##]')

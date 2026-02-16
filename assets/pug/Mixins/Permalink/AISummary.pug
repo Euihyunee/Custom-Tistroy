@@ -1,0 +1,28 @@
+//- AI Friendly Summary Block
+//- Only visible to AI or when inspected
+//- Uses semantic HTML and structured data concepts
+s_if_var_ai_summary_block
+  .ai-summary-block(hidden aria-hidden='true' data-role='ai-summary')
+    article.summary-content
+      h2.sr-only AI Summary
+      section
+        h3.sr-only Key Information
+        ul
+          li
+            strong Title:
+            span [##_article_rep_title_##]
+          li
+            strong Published:
+            time(datetime='[##_article_rep_date_##]') [##_article_rep_date_##]
+          li
+            strong Author:
+            span [##_blogger_##]
+          li
+            strong Description:
+            p [##_article_rep_desc_##]
+      
+      section
+        h3.sr-only Topics
+        s_tag_label
+          ul.tags
+            | [##_tag_label_rep_##]

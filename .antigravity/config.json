@@ -1,0 +1,16 @@
+{
+  "project": "Tistory-Custom-Agent",
+  "language": "ko",
+  "features": {
+    "seo_enhanced": true,
+    "ai_summary_block": true,
+    "dev_tools": {
+      "mermaid": true,
+      "katex": true,
+      "syntax_highlight": {
+        "theme_light": "github",
+        "theme_dark": "dracula"
+      }
+    }
+  }
+}
