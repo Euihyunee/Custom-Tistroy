@@ -126,9 +126,51 @@
   color: #969696; /* 기본 텍스트 색상 */
 }
 
+.yellow {
+  background-color: #fff3cd;
+  border-left: 4px solid #ffc107;
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 0 8px 8px 0;
+  color: #969696; /* 기본 텍스트 색상 */
+}
+
+.blue {
+  background-color: #cce5ff;
+  border-left: 4px solid #007bff;
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 0 8px 8px 0;
+  color: #969696; /* 기본 텍스트 색상 */
+}
+
+.red {
+  background-color: #f8d7da;
+  border-left: 4px solid #dc3545;
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 0 8px 8px 0;
+  color: #969696; /* 기본 텍스트 색상 */
+}
+
 /* 박스 내부의 굵은 글씨(**, <b>) 색상 */
 .green b,
 .green strong {
+  color: #333333;
+}
+
+.yellow b,
+.yellow strong {
+  color: #333333;
+}
+
+.blue b,
+.blue strong {
+  color: #333333;
+}
+
+.red b,
+.red strong {
   color: #333333;
 }
 
