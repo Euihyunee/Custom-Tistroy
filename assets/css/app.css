@@ -116,6 +116,15 @@
   }
 }
 
+/* 커스텀 마크다운 박스 스타일 (Tailwind Purge 방지용) */
+.green {
+  background-color: #d4edda;
+  border-left: 4px solid #28a745;
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 0 8px 8px 0;
+}
+
 @layer utilities {
   .text-hidden {
     @apply absolute w-px h-px -m-px overflow-hidden !important;
