@@ -123,6 +123,13 @@
   padding: 15px;
   margin: 20px 0;
   border-radius: 0 8px 8px 0;
+  color: #969696; /* 기본 텍스트 색상 */
+}
+
+/* 박스 내부의 굵은 글씨(**, <b>) 색상 */
+.green b,
+.green strong {
+  color: #333333;
 }
 
 @layer utilities {
