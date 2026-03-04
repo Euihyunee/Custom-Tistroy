@@ -79,10 +79,25 @@ style(once='article')
         }
 
         table[data-ke-align] {
-          td,
+          @apply w-full border-collapse !important;
+          
+          /* 헤더 영역 */
           th {
-            @apply bg-transparent border-0 border-b border-solid border-h-300 px-3 py-4 box-border text-sm leading-loose text-h-600;
-            @apply dark:text-h-200 dark:border-h-600;
+            @apply bg-h-200 text-h-600 font-bold border border-solid border-h-300 px-4 py-3 text-left !important;
+            @apply dark:bg-h-700 dark:text-[#f4f4f6] dark:border-h-600 !important;
+          }
+
+          /* 얼룩말(Zebra) 패턴 行 구분 */
+          tr {
+            &:nth-child(even) {
+              @apply bg-h-200 dark:bg-h-700;
+            }
+          }
+
+          /* 본문 영역 */
+          td {
+            @apply bg-transparent border border-solid border-h-300 px-4 py-3 box-border text-sm leading-loose text-h-600 text-left !important;
+            @apply dark:text-[#f4f4f6] dark:border-h-600 !important;
 
             figure {
               &.imageblock.alignCenter {
