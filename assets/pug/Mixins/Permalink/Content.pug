@@ -47,7 +47,93 @@ script(once='alpine-article-component').
      * Syntax highlighting code blocks in template
      */
     highlightCodeBlocks () {
-      this.$article.querySelectorAll('pre code').forEach(hljs.highlightElement)
+      this.$article.querySelectorAll('pre code').forEach(($code) => {
+        hljs.highlightElement($code)
+
+        // 1. Get wrapper info
+        const $pre = $code.parentElement
+        
+        // Extract language from class (e.g. language-javascript)
+        let lang = 'text'
+        $code.classList.forEach(cls => {
+          if (cls.startsWith('language-')) {
+            lang = cls.replace('language-', '')
+          }
+        })
+
+        // Convert language name for display (optional formatting)
+        if (lang === 'js') lang = 'javascript'
+        if (lang === 'ts') lang = 'typescript'
+        if (lang === 'py') lang = 'python'
+
+        // 2. Create the wrapper structure
+        const $wrapper = document.createElement('div')
+        $wrapper.className = 'code-block-wrapper'
+
+        // 3. Create the Header
+        const $header = document.createElement('div')
+        $header.className = 'code-block-header'
+
+        const $macButtons = document.createElement('div')
+        $macButtons.className = 'code-block-mac-buttons'
+        $macButtons.innerHTML = '<span class="mac-close"></span><span class="mac-minimize"></span><span class="mac-maximize"></span>'
+
+        const $lang = document.createElement('div')
+        $lang.className = 'code-block-lang'
+        $lang.textContent = lang
+
+        const $copy = document.createElement('div')
+        $copy.className = 'code-block-copy'
+        const copySvg = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>'
+        const copiedSvg = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>'
+        
+        $copy.innerHTML = copySvg
+        $copy.title = "Copy Code"
+        $copy.addEventListener('click', () => {
+          navigator.clipboard.writeText($code.textContent).then(() => {
+            $copy.innerHTML = copiedSvg
+            setTimeout(() => { $copy.innerHTML = copySvg }, 2000)
+          })
+        })
+        
+        $header.appendChild($macButtons)
+        $header.appendChild($lang)
+        $header.appendChild($copy)
+
+        // 4. Create the Body (Line numbers + Content)
+        const $body = document.createElement('div')
+        $body.className = 'code-block-body'
+
+        const $lineNumbers = document.createElement('div')
+        $lineNumbers.className = 'code-block-line-numbers'
+        
+        // Count lines safely
+        const text = $code.textContent || ''
+        const lines = text.split('\n')
+        let lineCount = lines.length
+        if (lineCount > 0 && lines[lineCount - 1] === '') {
+          lineCount--
+        }
+        
+        let linesText = ''
+        for (let i = 1; i <= lineCount; i++) {
+          linesText += i + '\n'
+        }
+        $lineNumbers.textContent = linesText
+
+        const $contentArea = document.createElement('div')
+        $contentArea.className = 'code-block-content'
+        
+        // 5. Assemble DOM
+        $pre.parentNode.insertBefore($wrapper, $pre)
+        $contentArea.appendChild($pre)
+        
+        $body.appendChild($lineNumbers)
+        $body.appendChild($contentArea)
+
+        $wrapper.appendChild($header)
+        $wrapper.appendChild($body)
+      })
     },
 
     /**

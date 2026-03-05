@@ -323,3 +323,121 @@ code.hljs, code {
   color: var(--hljs-markup-deleted) !important;
   background-color: var(--hljs-markup-deleted-bg) !important;
 }
+
+/* --- Code Block macOS Terminal UI --- */
+.code-block-wrapper {
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  background-color: var(--hljs-bg);
+  border: 1px solid #e6e6e9; /* h-300 */
+}
+.dark .code-block-wrapper {
+  border-color: #292a2d; /* h-700 */
+}
+
+.code-block-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1rem;
+  background-color: #f4f4f6; /* h-200 */
+  border-bottom: 1px solid #e6e6e9; /* h-300 */
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.8rem;
+  color: #66666e; /* h-500 */
+}
+.dark .code-block-header {
+  background-color: #1e1f21; /* h-800 */
+  border-bottom-color: #292a2d; /* h-700 */
+  color: #9999a1; /* h-400 */
+}
+
+.code-block-mac-buttons {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.code-block-mac-buttons span {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.mac-close { background-color: #ff5f56; }
+.mac-minimize { background-color: #ffbd2e; }
+.mac-maximize { background-color: #27c93f; }
+
+.code-block-lang {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  user-select: none;
+}
+
+.code-block-copy {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+}
+.code-block-copy:hover {
+  background-color: #e6e6e9; /* h-300 */
+  color: #1e1f21;
+}
+.dark .code-block-copy:hover {
+  background-color: #292a2d; /* h-700 */
+  color: #f4f4f6;
+}
+
+.code-block-body {
+  display: flex;
+  overflow-x: auto;
+  align-items: stretch;
+}
+
+.code-block-line-numbers {
+  padding: 1rem 0.6rem;
+  text-align: right;
+  color: #9999a1; /* h-400 */
+  border-right: 1px solid #e6e6e9; /* h-300 */
+  user-select: none;
+  font-family: "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  font-size: 0.875rem !important;
+  line-height: 1.6 !important;
+  white-space: pre !important;
+  background-color: var(--hljs-bg);
+  min-width: 2.5rem;
+}
+.dark .code-block-line-numbers {
+  border-right-color: #292a2d; /* h-700 */
+  color: #66666e; /* h-500 */
+}
+
+.code-block-content {
+  flex: 1;
+  overflow-x: auto;
+}
+.code-block-content pre {
+  margin: 0 !important;
+  padding: 1rem !important;
+  background: transparent !important;
+  border: none !important;
+}
+.code-block-content pre code,
+.code-block-content pre code.hljs {
+  display: block;
+  padding: 0 !important;
+  background: transparent !important;
+  font-family: "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  font-size: 0.875rem !important;
+  line-height: 1.6 !important;
+  border: none !important;
+  white-space: pre !important;
+  word-spacing: normal !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
