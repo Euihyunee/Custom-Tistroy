@@ -54,8 +54,18 @@ style(once='article')
           list-style-type: disc !important;
         }
 
+        /* 2단계 중첩 ul: ▪(BLACK SMALL SQUARE) 특수문자로 1단계 disc와 시각적 구분 */
+        ul ul > li {
+          list-style-type: '▪ ' !important;
+        }
+
         ol > li {
           list-style-type: decimal !important;
+        }
+
+        /* 2단계 중첩 ol: 알파벳(a, b, c...)으로 1단계 숫자와 시각적 구분 */
+        ol ol > li {
+          list-style-type: lower-alpha !important;
         }
 
         /* HTML 저장(data-ke-*)과 마크다운 저장(순수 태그) 모두 색상/스타일 적용 */
