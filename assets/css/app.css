@@ -178,6 +178,22 @@ blockquote.default-blockquote p {
   margin-bottom: 0px;
 }
 
+/* 박스 내부 리스트: list-style 명시하여 bullet/번호 정상 표시 */
+.green ul, .yellow ul, .blue ul, .red ul, blockquote.default-blockquote ul {
+  list-style-type: disc !important;
+  padding-left: 1.5em !important;
+  color: #333333 !important;
+}
+.green ol, .yellow ol, .blue ol, .red ol, blockquote.default-blockquote ol {
+  list-style-type: decimal !important;
+  padding-left: 1.5em !important;
+  color: #333333 !important;
+}
+.green li, .yellow li, .blue li, .red li, blockquote.default-blockquote li {
+  color: #333333 !important;
+  display: list-item !important;
+}
+
 @layer utilities {
   .text-hidden {
     @apply absolute w-px h-px -m-px overflow-hidden !important;
@@ -246,13 +262,15 @@ blockquote.default-blockquote p {
 }
 
 /* highlight.js 클래스들에 CSS 변수 적용 */
-pre code.hljs, pre code {
+/* ⚠️ 전역 code 선택자 대신 .code-block-content 범위로 한정하여 인라인 코드(<code>)에 영향 안주도록 설정 */
+.code-block-content pre code.hljs,
+.code-block-content pre code {
   display: block;
   overflow-x: auto;
-  padding: 1em;
   color: var(--hljs-color) !important;
 }
-code.hljs, code {
+code.hljs {
+  /* 실제 hljs 클래스가 붙은 블록 코드만 대상 */
   padding: 3px 5px;
   color: var(--hljs-color) !important;
 }

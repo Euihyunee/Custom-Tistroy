@@ -34,20 +34,36 @@ style(once='article')
           @apply text-base lg:text-lg;
         }
 
-        ol[data-ke-list-type],
-        ul[data-ke-list-type] {
+        /* data-ke-list-type(HTML 저장)과 순수 ol/ul(마크다운 저장) 모두 지원 */
+        ol,
+        ul {
           @apply flex flex-col gap-y-1 pl-[1.1rem] my-5;
 
-          ol[data-ke-list-type],
-          ul[data-ke-list-type] {
+          ol,
+          ul {
             @apply my-0 ml-6;
+          }
+
+          /* Tailwind Preflight가 list-style: none 초기화하므로 명시적으로 복구 */
+          li {
+            display: list-item !important;
           }
         }
 
+        ul > li {
+          list-style-type: disc !important;
+        }
+
+        ol > li {
+          list-style-type: decimal !important;
+        }
+
+        /* HTML 저장(data-ke-*)과 마크다운 저장(순수 태그) 모두 색상/스타일 적용 */
         p,
-        ol[data-ke-list-type],
-        ul[data-ke-list-type],
-        table[data-ke-align],
+        ol,
+        ul,
+        li,
+        table,
         blockquote[data-ke-style=style2],
         blockquote[data-ke-style=style3] {
           @apply text-h-600 dark:text-h-300;
@@ -69,7 +85,8 @@ style(once='article')
 
         figure,
         pre,
-        table[data-ke-align],
+        /* table: HTML 저장(data-ke-align)과 마크다운 저장(순수 table) 모두 마진 적용 */
+        table,
         [data-ke-type=moreLess] {
           @apply my-5;
         }
@@ -78,7 +95,8 @@ style(once='article')
           @apply dark:invert dark:brightness-0;
         }
 
-        table[data-ke-align] {
+        /* table: HTML 저장(data-ke-align 있음)과 마크다운 저장(속성 없음) 모두 스타일 적용 */
+        table {
           @apply w-full border-collapse !important;
           
           /* 헤더 영역 */
@@ -187,6 +205,14 @@ style(once='article')
 
           .moreless-content {
             @apply mt-6;
+          }
+        }
+
+        /* 인용문 내부 리스트: ul/ol에 적용된 my-5 마진을 제거하여 위아래 공백 방지 */
+        /* HTML 저장(blockquote[data-ke-style])과 마크다운 저장(순수 blockquote) 모두 커버 */
+        blockquote {
+          ul, ol {
+            @apply my-0;
           }
         }
 
