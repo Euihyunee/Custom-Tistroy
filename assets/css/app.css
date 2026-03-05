@@ -183,7 +183,7 @@
 .blue ol,
 .red ul,
 .red ol {
-  color: #333333;
+  color: #333333 !important;
   margin: 0 !important;
 }
 
@@ -206,7 +206,120 @@
     @apply invisible;
   }
 
+
   .lazyloaded {
     @apply animate-none bg-h-100;
   }
+}
+
+/* GitHub & GitHub Dark 통합 하이라이트 테마 (CSS 변수) */
+
+/* 기본 상태 (Light Theme - GitHub) */
+:root {
+  --hljs-color: #24292e;
+  --hljs-bg: #f4f4f6; /* 기존 라이트 테마 회색 배경 복구 */
+  --hljs-keyword: #d73a49;
+  --hljs-entity: #6f42c1;
+  --hljs-constant: #005cc5;
+  --hljs-string: #032f62;
+  --hljs-variable: #e36209;
+  --hljs-comment: #6a737d;
+  --hljs-entity-tag: #22863a;
+  --hljs-subst: #24292e;
+  --hljs-markup-heading: #005cc5;
+  --hljs-markup-list: #735c0f;
+  --hljs-markup-inserted: #22863a;
+  --hljs-markup-inserted-bg: #f0fff4;
+  --hljs-markup-deleted: #b31d28;
+  --hljs-markup-deleted-bg: #ffeef0;
+}
+
+/* 다크 모드 상태 (Dark Theme - GitHub Dark) */
+.dark {
+  --hljs-color: #ffffff !important;
+  --hljs-bg: #0d1117;
+  --hljs-keyword: #ff7b72;
+  --hljs-entity: #d2a8ff;
+  --hljs-constant: #79c0ff;
+  --hljs-string: #a5d6ff;
+  --hljs-variable: #ffa657;
+  --hljs-comment: #8b949e;
+  --hljs-entity-tag: #7ee787;
+  --hljs-subst: #c9d1d9;
+  --hljs-markup-heading: #1f6feb;
+  --hljs-markup-list: #f2cc60;
+  --hljs-markup-inserted: #aff5b4;
+  --hljs-markup-inserted-bg: #033a16;
+  --hljs-markup-deleted: #ffdcd7;
+  --hljs-markup-deleted-bg: #67060c;
+}
+
+/* highlight.js 클래스들에 CSS 변수 적용 */
+pre code.hljs, pre code {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+  color: var(--hljs-color) !important;
+}
+code.hljs, code {
+  padding: 3px 5px;
+  color: var(--hljs-color) !important;
+}
+.hljs {
+  color: var(--hljs-color) !important;
+  background: var(--hljs-bg) !important;
+}
+.hljs-doctag, .hljs-keyword, .hljs-meta .hljs-keyword, .hljs-template-tag, .hljs-template-variable, .hljs-type, .hljs-variable.language_ {
+  color: var(--hljs-keyword) !important;
+}
+.hljs-title, .hljs-title.class_, .hljs-title.class_.inherited__, .hljs-title.function_ {
+  color: var(--hljs-entity) !important;
+}
+.hljs-attr, .hljs-char.escape_,
+.hljs-link,
+.hljs-params,
+.hljs-property,
+.hljs-punctuation,
+.hljs-function,
+.hljs-tag,
+.hljs-subst {
+  color: var(--hljs-color) !important;
+}
+.hljs-attribute, .hljs-literal, .hljs-meta, .hljs-number, .hljs-operator, .hljs-variable, .hljs-selector-attr, .hljs-selector-class, .hljs-selector-id {
+  color: var(--hljs-constant) !important;
+}
+.hljs-regexp, .hljs-string, .hljs-meta .hljs-string {
+  color: var(--hljs-string) !important;
+}
+.hljs-built_in, .hljs-symbol {
+  color: var(--hljs-variable) !important;
+}
+.hljs-comment, .hljs-code, .hljs-formula {
+  color: var(--hljs-comment) !important;
+}
+.hljs-name, .hljs-quote, .hljs-selector-tag, .hljs-selector-pseudo {
+  color: var(--hljs-entity-tag) !important;
+}
+.hljs-section {
+  color: var(--hljs-markup-heading) !important;
+  font-weight: bold !important;
+}
+.hljs-bullet {
+  color: var(--hljs-markup-list) !important;
+}
+.hljs-emphasis {
+  color: var(--hljs-color) !important;
+  font-style: italic !important;
+}
+.hljs-strong {
+  color: var(--hljs-color) !important;
+  font-weight: bold !important;
+}
+.hljs-addition {
+  color: var(--hljs-markup-inserted) !important;
+  background-color: var(--hljs-markup-inserted-bg) !important;
+}
+.hljs-deletion {
+  color: var(--hljs-markup-deleted) !important;
+  background-color: var(--hljs-markup-deleted-bg) !important;
 }
