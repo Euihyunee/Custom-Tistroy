@@ -116,75 +116,66 @@
   }
 }
 
-/* 커스텀 마크다운 박스 스타일 (Tailwind Purge 방지용) */
+/* 기본 인용문(blockquote) 스타일: {: green } 구문이 없으면 검정색 커스텀 박스로 표기 */
+blockquote.default-blockquote {
+  background-color: #e5e7eb !important;
+  border-left: 4px solid #111827 !important;
+  padding: 15px !important;
+  margin: 20px 0 !important;
+  border-radius: 0 8px 8px 0 !important;
+  color: #333333 !important;
+}
+
+blockquote.default-blockquote p {
+  color: #333333 !important;
+  margin-bottom: 0px !important;
+}
+
+/* 다크 모드에서의 기본 인용문 검정색 박스 호환 */
+.dark blockquote.default-blockquote {
+  background-color: #1f2937 !important;
+  border-left-color: #9ca3af !important;
+  color: #f3f4f6 !important;
+}
+.dark blockquote.default-blockquote p {
+  color: #f3f4f6 !important;
+}
+
+/* 커스텀 마크다운 박스 (blockquote 또는 div로 사용) */
+.green, .yellow, .blue, .red {
+  padding: 15px !important;
+  margin: 20px 0 !important;
+  border-radius: 0 8px 8px 0 !important;
+  color: #333333 !important; /* 기본 텍스트 색상 검정색으로 통일 */
+}
+
 .green {
-  background-color: #d4edda;
-  border-left: 4px solid #28a745;
-  padding: 15px;
-  margin: 20px 0;
-  border-radius: 0 8px 8px 0;
-  color: #969696; /* 기본 텍스트 색상 */
+  background-color: #d4edda !important;
+  border-left: 4px solid #28a745 !important;
 }
 
 .yellow {
-  background-color: #fff3cd;
-  border-left: 4px solid #ffc107;
-  padding: 15px;
-  margin: 20px 0;
-  border-radius: 0 8px 8px 0;
-  color: #969696; /* 기본 텍스트 색상 */
+  background-color: #fff3cd !important;
+  border-left: 4px solid #ffc107 !important;
 }
 
 .blue {
-  background-color: #cce5ff;
-  border-left: 4px solid #007bff;
-  padding: 15px;
-  margin: 20px 0;
-  border-radius: 0 8px 8px 0;
-  color: #969696; /* 기본 텍스트 색상 */
+  background-color: #cce5ff !important;
+  border-left: 4px solid #007bff !important;
 }
 
 .red {
-  background-color: #f8d7da;
-  border-left: 4px solid #dc3545;
-  padding: 15px;
-  margin: 20px 0;
-  border-radius: 0 8px 8px 0;
-  color: #969696; /* 기본 텍스트 색상 */
+  background-color: #f8d7da !important;
+  border-left: 4px solid #dc3545 !important;
 }
 
-/* 박스 내부의 굵은 글씨(**, <b>) 색상 */
-.green b,
-.green strong {
-  color: #333333;
-}
-
-.yellow b,
-.yellow strong {
-  color: #333333;
-}
-
-.blue b,
-.blue strong {
-  color: #333333;
-}
-
-.red b,
-.red strong {
-  color: #333333;
-}
-
-/* 박스 내부의 리스트(li) 색상 및 마진 제거 */
-.green ul,
-.green ol,
-.yellow ul,
-.yellow ol,
-.blue ul,
-.blue ol,
-.red ul,
-.red ol {
+/* 박스 내부의 텍스트(p), 굵은 글씨, 리스트 색상 통일 */
+.green p, .green b, .green strong, .green ul, .green ol,
+.yellow p, .yellow b, .yellow strong, .yellow ul, .yellow ol,
+.blue p, .blue b, .blue strong, .blue ul, .blue ol,
+.red p, .red b, .red strong, .red ul, .red ol {
   color: #333333 !important;
-  margin: 0 !important;
+  margin-bottom: 0px;
 }
 
 @layer utilities {

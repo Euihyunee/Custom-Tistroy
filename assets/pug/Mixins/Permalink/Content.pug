@@ -30,6 +30,7 @@ script(once='alpine-article-component').
       this.setAnchorToHeadings()
       this.collectHeading()
       this.highlightCodeBlocks()
+      this.parseCustomBlockquotes()
       this.addBlankHashToMoreLesses()
       this.setPositionToImages()
     },
@@ -133,6 +134,44 @@ script(once='alpine-article-component').
 
         $wrapper.appendChild($header)
         $wrapper.appendChild($body)
+      })
+    },
+
+    /**
+     * Parse custom blockquotes with {: .class } syntax
+     */
+    parseCustomBlockquotes () {
+      this.$article.querySelectorAll('blockquote').forEach($quote => {
+        let appliedClass = null
+        const classMatchRegex = /\{:\s*\.(green|yellow|blue|red)\s*\}/
+
+        const walkers = [...Array.from($quote.querySelectorAll('p')), $quote]
+        
+        const $nextP = $quote.nextElementSibling
+        if ($nextP && $nextP.tagName === 'P') {
+          walkers.push($nextP)
+        }
+
+        for (let $el of walkers) {
+          if (classMatchRegex.test($el.innerHTML)) {
+            const match = $el.innerHTML.match(classMatchRegex)
+            appliedClass = match[1]
+            $el.innerHTML = $el.innerHTML.replace(match[0], '')
+            
+            if ($el.tagName === 'P' && $el.textContent.trim() === '' && !$el.querySelector('img')) {
+              $el.remove()
+            }
+            break
+          }
+        }
+
+        if (appliedClass) {
+          $quote.classList.add(appliedClass)
+          $quote.removeAttribute('data-ke-style')
+        } else {
+          $quote.classList.add('default-blockquote')
+          $quote.removeAttribute('data-ke-style')
+        }
       })
     },
 
