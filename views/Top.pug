@@ -12,16 +12,7 @@ aside#top(
       alt='[##_blogger_##]'
       width='36'
       height='36')
-  .tit(
-    x-show='open'
-    x-transition:enter='transition ease-linear duration-100'
-    x-transition:enter-start='opacity-0'
-    x-transition:enter-end='opacity-100'
-    x-transition:leave='transition ease-linear duration-100'
-    x-transition:leave-start='opacity-100'
-    x-transition:leave-end='opacity-0'
-    class='max-w-[calc(80vw-152px)] h-5')
-    .txt(class='m-0 text-overflow-hidden text-sm font-bold text-h-800 dark:text-h-200') [##_page_title_##]
+  //- 글 제목 출력 요소 제거 (User 요청)
   div(class='absolute left-1/2 -translate-x-1/2 w-full max-w-md px-4 hidden lg:block')
     search.wrap(class='flex items-center gap-x-2 px-4 py-1.5 rounded-full border border-solid border-h-200 bg-white dark:border-h-600 dark:bg-h-700 shadow-sm ring-1 ring-black/5')
       s_search
