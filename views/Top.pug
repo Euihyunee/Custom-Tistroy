@@ -22,6 +22,18 @@ aside#top(
     x-transition:leave-end='opacity-0'
     class='max-w-[calc(80vw-152px)] h-5')
     .txt(class='m-0 text-overflow-hidden text-sm font-bold text-h-800 dark:text-h-200') [##_page_title_##]
+  div(class='absolute left-1/2 -translate-x-1/2 w-full max-w-md px-4 hidden lg:block')
+    search.wrap(class='flex items-center gap-x-2 px-4 py-1.5 rounded-full border border-solid border-h-200 bg-white dark:border-h-600 dark:bg-h-700 shadow-sm ring-1 ring-black/5')
+      s_search
+        label(for='top-keyword' class='text-h-400')
+          i.fa-solid.fa-magnifying-glass.text-xs
+        input#top-keyword(
+          type='text'
+          name='[##_search_name_##]'
+          value='[##_search_text_##]'
+          placeholder='검색어를 입력하세요'
+          onkeypress='if (event.keyCode == 13) { [##_search_onclick_submit_##] }'
+          class='w-full bg-transparent border-0 outline-0 text-sm placeholder:text-h-400 text-h-600 dark:text-h-200 cursor-text')
   #menu-toolbar(
     x-data='menuToolbar'
     class='menu_toolbar')

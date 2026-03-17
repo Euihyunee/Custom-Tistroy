@@ -15,7 +15,7 @@
   }
 
   .permalink-container {
-    @apply w-full px-4 lg:px-0 lg:max-w-screen-lg lg:w-pem lg:mx-auto;
+    @apply w-full px-4 lg:px-0 lg:w-pem lg:mx-auto relative container;
   }
 
   .cover-cols-1 {

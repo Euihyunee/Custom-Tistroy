@@ -9,4 +9,13 @@ li#profile.el(class='text-center flex flex-col items-center my-4')
     a.link(
       href='[##_blog_link_##]'
       class='link_tit text-h-800 dark:text-h-200 inline-block pt-4 pb-1 font-medium') [##_title_##]
-  .blogger(class='text-h-400 text-sm') [##_blogger_##]
+  .blogger(class='text-h-400 text-sm mb-6') [##_blogger_##]
+  .theme-switcher(class='flex gap-x-1.5 p-1.5 bg-h-300 dark:bg-h-600 rounded-xl w-full max-w-[192px]')
+    button(
+      @click='if (dark) { darkMode.toggle(); dark = false; }'
+      :class='! dark ? "bg-white text-h-800 shadow-md ring-1 ring-black/5" : "text-h-500 hover:text-h-700 dark:text-h-400 dark:hover:text-h-200"'
+      class='flex-1 py-2 text-sm font-bold rounded-lg transition-all duration-200 focus:outline-none') Light
+    button(
+      @click='if (! dark) { darkMode.toggle(); dark = true; }'
+      :class='dark ? "bg-h-700 text-white shadow-md ring-1 ring-white/10" : "text-h-500 hover:text-h-700 dark:text-h-400 dark:hover:text-h-200"'
+      class='flex-1 py-2 text-sm font-bold rounded-lg transition-all duration-200 focus:outline-none') Dark

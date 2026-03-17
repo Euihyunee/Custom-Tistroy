@@ -12,9 +12,10 @@ script.
      * Init
      */
     init () {
-      if (this.foldableCategory) {
-        this.$subCategories.forEach(this.foldable.bind(this))
-      }
+      // 카테고리 상시 펼침을 위해 기존 접기 로직 비활성화
+      // if (this.foldableCategory) {
+      //   this.$subCategories.forEach(this.foldable.bind(this))
+      // }
     },
 
     /**
@@ -74,8 +75,13 @@ style
           }
         }
 
+        .link_tit,
+        .link_item {
+          @apply text-sm font-bold mb-1 inline-block text-h-900 dark:text-h-200;
+        }
+
         .link_tit {
-          @apply text-sm font-bold mb-6 inline-block text-h-900 dark:text-h-200;
+          @apply mb-4; /* '분류 전체보기'와 아래 카테고리 간격 최적화 */
         }
 
         ul {
@@ -91,11 +97,14 @@ style
         }
 
         .sub_category_list {
+          @apply pl-4 mt-2 mb-2; /* 2단 카테고리 들여쓰기 및 상하 간격 축소 */
+
           li {
-            @apply first:mt-4;
+            @apply flex flex-col gap-y-2;
 
             .link_sub_item::before {
-              @apply relative -top-0.5 mr-1 fa-chevron-right text-2xs font-bold text-h-400;
+              /* 2단 카테고리 chevron 제거 */
+              @apply hidden;
             }
           }
         }
