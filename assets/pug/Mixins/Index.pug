@@ -25,7 +25,7 @@ mixin index(type, hasCategory=true, options={})
                 img.thumb(
                   data-src=`[##_${type}_thumbnail${type === 'notice_rep' ? '_url' : '' }_##]`
                   data-sizes='auto'
-                  alt=''
+                  alt=`[##_${type}_title_##]`
                   class='lazyload')
           if options.fallback
             .fallback
