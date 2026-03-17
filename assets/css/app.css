@@ -114,6 +114,15 @@
   .fa-thumbtack {
     @apply font-awesome font-bold content-['\f08d'];
   }
+
+  /* ─── 카드 그리드 레이아웃 ────────────────────────────────────────
+   * 카테고리/목록 페이지에서 글들을 카드 형식으로 배치하기 위한 그리드.
+   * 모바일(1열) → 태블릿 sm(2열) → 데스크탑 lg(4열) 반응형.
+   * 한 페이지에 8개 표시 시 데스크탑에서 4×2 배치가 됨.
+   * ──────────────────────────────────────────────────────────────── */
+  .card-grid {
+    @apply grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4;
+  }
 }
 
 /* 기본 인용문(blockquote) 스타일: {: green } 구문이 없으면 검정색 커스텀 박스로 표기 */
@@ -142,7 +151,10 @@ blockquote.default-blockquote p {
 }
 
 /* 커스텀 마크다운 박스 (blockquote 또는 div로 사용) */
-.green, .yellow, .blue, .red {
+.green,
+.yellow,
+.blue,
+.red {
   padding: 15px !important;
   margin: 20px 0 !important;
   border-radius: 0 8px 8px 0 !important;
@@ -170,26 +182,54 @@ blockquote.default-blockquote p {
 }
 
 /* 박스 내부의 텍스트(p), 굵은 글씨, 리스트 색상 통일 */
-.green p, .green b, .green strong, .green ul, .green ol,
-.yellow p, .yellow b, .yellow strong, .yellow ul, .yellow ol,
-.blue p, .blue b, .blue strong, .blue ul, .blue ol,
-.red p, .red b, .red strong, .red ul, .red ol {
+.green p,
+.green b,
+.green strong,
+.green ul,
+.green ol,
+.yellow p,
+.yellow b,
+.yellow strong,
+.yellow ul,
+.yellow ol,
+.blue p,
+.blue b,
+.blue strong,
+.blue ul,
+.blue ol,
+.red p,
+.red b,
+.red strong,
+.red ul,
+.red ol {
   color: #333333 !important;
   margin-bottom: 0px;
 }
 
 /* 박스 내부 리스트: list-style 명시하여 bullet/번호 정상 표시 */
-.green ul, .yellow ul, .blue ul, .red ul, blockquote.default-blockquote ul {
+.green ul,
+.yellow ul,
+.blue ul,
+.red ul,
+blockquote.default-blockquote ul {
   list-style-type: disc !important;
   padding-left: 1.5em !important;
   color: #333333 !important;
 }
-.green ol, .yellow ol, .blue ol, .red ol, blockquote.default-blockquote ol {
+.green ol,
+.yellow ol,
+.blue ol,
+.red ol,
+blockquote.default-blockquote ol {
   list-style-type: decimal !important;
   padding-left: 1.5em !important;
   color: #333333 !important;
 }
-.green li, .yellow li, .blue li, .red li, blockquote.default-blockquote li {
+.green li,
+.yellow li,
+.blue li,
+.red li,
+blockquote.default-blockquote li {
   color: #333333 !important;
   display: list-item !important;
 }
@@ -212,7 +252,6 @@ blockquote.default-blockquote p {
   .lazyload:not([src]) {
     @apply invisible;
   }
-
 
   .lazyloaded {
     @apply animate-none bg-h-100;
@@ -278,13 +317,23 @@ code.hljs {
   color: var(--hljs-color) !important;
   background: var(--hljs-bg) !important;
 }
-.hljs-doctag, .hljs-keyword, .hljs-meta .hljs-keyword, .hljs-template-tag, .hljs-template-variable, .hljs-type, .hljs-variable.language_ {
+.hljs-doctag,
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable.language_ {
   color: var(--hljs-keyword) !important;
 }
-.hljs-title, .hljs-title.class_, .hljs-title.class_.inherited__, .hljs-title.function_ {
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-title.function_ {
   color: var(--hljs-entity) !important;
 }
-.hljs-attr, .hljs-char.escape_,
+.hljs-attr,
+.hljs-char.escape_,
 .hljs-link,
 .hljs-params,
 .hljs-property,
@@ -294,19 +343,35 @@ code.hljs {
 .hljs-subst {
   color: var(--hljs-color) !important;
 }
-.hljs-attribute, .hljs-literal, .hljs-meta, .hljs-number, .hljs-operator, .hljs-variable, .hljs-selector-attr, .hljs-selector-class, .hljs-selector-id {
+.hljs-attribute,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-operator,
+.hljs-variable,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id {
   color: var(--hljs-constant) !important;
 }
-.hljs-regexp, .hljs-string, .hljs-meta .hljs-string {
+.hljs-regexp,
+.hljs-string,
+.hljs-meta .hljs-string {
   color: var(--hljs-string) !important;
 }
-.hljs-built_in, .hljs-symbol {
+.hljs-built_in,
+.hljs-symbol {
   color: var(--hljs-variable) !important;
 }
-.hljs-comment, .hljs-code, .hljs-formula {
+.hljs-comment,
+.hljs-code,
+.hljs-formula {
   color: var(--hljs-comment) !important;
 }
-.hljs-name, .hljs-quote, .hljs-selector-tag, .hljs-selector-pseudo {
+.hljs-name,
+.hljs-quote,
+.hljs-selector-tag,
+.hljs-selector-pseudo {
   color: var(--hljs-entity-tag) !important;
 }
 .hljs-section {
@@ -352,7 +417,16 @@ code.hljs {
   padding: 0.6rem 1rem;
   background-color: #f4f4f6; /* h-200 */
   border-bottom: 1px solid #e6e6e9; /* h-300 */
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
   font-size: 0.8rem;
   color: #66666e; /* h-500 */
 }
@@ -373,9 +447,15 @@ code.hljs {
   height: 12px;
   border-radius: 50%;
 }
-.mac-close { background-color: #ff5f56; }
-.mac-minimize { background-color: #ffbd2e; }
-.mac-maximize { background-color: #27c93f; }
+.mac-close {
+  background-color: #ff5f56;
+}
+.mac-minimize {
+  background-color: #ffbd2e;
+}
+.mac-maximize {
+  background-color: #27c93f;
+}
 
 .code-block-lang {
   font-weight: 600;
@@ -414,7 +494,9 @@ code.hljs {
   color: #9999a1; /* h-400 */
   border-right: 1px solid #e6e6e9; /* h-300 */
   user-select: none;
-  font-family: "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  font-family:
+    "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace !important;
   font-size: 0.875rem !important;
   line-height: 1.6 !important;
   white-space: pre !important;
@@ -441,7 +523,9 @@ code.hljs {
   display: block;
   padding: 0 !important;
   background: transparent !important;
-  font-family: "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  font-family:
+    "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace !important;
   font-size: 0.875rem !important;
   line-height: 1.6 !important;
   border: none !important;
@@ -450,3 +534,124 @@ code.hljs {
   word-break: normal !important;
   overflow-wrap: normal !important;
 }
+
+/* ─── 카드 아이템 스타일 ──────────────────────────────────────────────
+ * .card-grid 안의 각 li > .post 에 적용되는 카드 디자인.
+ * 썸네일(위) + 텍스트(아래) 구조로 배치되며,
+ * 호버 시 살짝 떠오르는 애니메이션으로 인터랙티브한 느낌을 줌.
+ * ──────────────────────────────────────────────────────────────────── */
+
+/* 리스트 마커(불릿) 제거 */
+.card-grid li { list-style: none; }
+
+.card-grid .post {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background-color: #ffffff;
+  border: 1px solid #e6e6e9;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: 100%;
+}
+.dark .card-grid .post { background-color: #1e1f21; border-color: #292a2d; }
+
+.card-grid .post:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+}
+.dark .card-grid .post:hover { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); }
+
+/* 글 전체를 클릭할 수 있도록 a.link를 카드 전체에 펼침 */
+.card-grid .post .link { position: absolute; inset: 0; z-index: 1; }
+
+/* ── 썸네일 영역: 16:9 비율로 고정 ── */
+.card-grid .post .picture {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 비율 */
+  overflow: hidden;
+  background-color: #f4f4f6;
+  flex-shrink: 0;
+}
+.dark .card-grid .post .picture { background-color: #292a2d; }
+
+.card-grid .post .picture .img { position: absolute; inset: 0; }
+
+.card-grid .post .picture .img img.thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+/* 호버 시 썸네일 확대 효과 */
+.card-grid .post:hover .picture .img img.thumb { transform: scale(1.05); }
+
+/* 썸네일 없을 때 fallback 이미지 아이콘 */
+.card-grid .post .picture .fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-grid .post .picture .fallback::before {
+  content: '\f03e'; /* Font Awesome: image 아이콘 */
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 400;
+  font-size: 2rem;
+  color: #c8c8cc;
+}
+
+/* 썸네일 아이콘과 실제 이미지가 겹치는 문제 해결: 
+   이미지(.img) 요소가 존재할 경우, 그 뒤에 나오는 폴백(.fallback) 요소를 숨깁니다. */
+.card-grid .post .picture .img ~ .fallback {
+  display: none;
+}
+
+/* ── 텍스트 정보 영역 ── */
+.card-grid .post .info {
+  padding: 0.875rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  flex: 1;
+}
+
+/* 글 제목: 2줄 초과 말줄임 */
+.card-grid .post .info .header .tit {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #1e1f21;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.dark .card-grid .post .info .header .tit { color: #f4f4f6; }
+
+/* 날짜 / 카테고리 메타 정보 */
+.card-grid .post .info .header .desc {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  color: #9999a1;
+  margin-top: 0.25rem;
+}
+.card-grid .post .info .header .desc .delimiter { color: #c8c8cc; }
+
+/* 요약문: 2줄까지만 표시 */
+.card-grid .post .info .summary {
+  font-size: 0.75rem;
+  color: #66666e;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.dark .card-grid .post .info .summary { color: #9999a1; }
+

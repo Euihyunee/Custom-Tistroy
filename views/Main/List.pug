@@ -1,9 +1,11 @@
 s_list
   section#list(
     x-data='{ listStyle: "[##_list_style_##]" }'
-    x-init='$store.header.title = "[##_list_conform_##]"'
-    :data-list-style='listStyle')
-    s_list_rep
-      +index('list_rep')
+    x-init='$store.header.title = "[##_list_conform_##]"')
+    //- 카드 그리드 컨테이너: 카테고리/목록 페이지의 글들을 카드 형태로 배치
+    ul.card-grid(class='index-container pt-8 lg:pt-12')
+      s_list_rep
+        li
+          +index('list_rep')
     s_list_empty
       include List/Empty
